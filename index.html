@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    
+    
+    <title>Train Time</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Train Schedule</h1>
+            <p class="lead">Enter train information to receive information on arrival of next train</p>
+        </div>
+    </div>
+
+    <table id="trainTable" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Train Name:</th>
+                <th scope="col">Destination:</th>
+                <th scope="col">Departure Time:</th>
+                <th scope="col">Frequency:</th>
+                <th scope="col">Minutes Remaining:</th>
+                <th scope="col">Arrival Time:</th>
+            </tr>
+        </thead>
+        <tbody >
+
+        </tbody>
+    </table>
+
+    <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Name of Train:</label>
+            <input type="text" class="form-control" id="trainName" placeholder="Enter train name..">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Destination:</label>
+            <input type="text" class="form-control" id="trainDestination" placeholder="Enter destination..">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Departure Time: (Military Time)</label>
+            <input type="text" class="form-control" id="trainDeparture" placeholder="Enter departure time..">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Frequency of train: (min)</label>
+            <input type="text" class="form-control" id="trainFrequency" placeholder="Enter frequency of train..">
+        </div>
+        <input id="submitBtn" class="btn btn-primary" type="submit" value="Submit">
+    </form>
+
+
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+
+<!-- <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBWFUDqULLIR42qbj3F3uxUOQiB-pBq-gw",
+    authDomain: "train-times-e6184.firebaseapp.com",
+    databaseURL: "https://train-times-e6184.firebaseio.com",
+    projectId: "train-times-e6184",
+    storageBucket: "train-times-e6184.appspot.com",
+    messagingSenderId: "881047901070"
+  };
+  firebase.initializeApp(config);
+
+var database = firebase.database();
+
+database.ref().on("child_added", function(childSnapshot){
+var name = childSnapshot.val().name;
+var destination = childSnapshot.val().destination;
+var departure = childSnapshot.val().departure;
+var frequency = childSnapshot.val().frequency;
+
+$("#trainTable > tbody").append("<tr><td>" + name + "</tr></td>" + "<tr><td>" + destination + "</tr></td>" + "<tr><td>" + departure + "</tr></td>" + "<tr><td>" + frequency + "</tr></td>")
+});
+
+database.ref().on("value", function(snapshot){
+
+});
+
+$("#submitBtn").on('click', function(){
+    event.preventDefault();
+    var trainName = $("#trainName").val().trim();
+    var destination = $("#trainDestination").val().trim();
+    var departure = $("#trainDeparture").val().trim();
+    var frequency = $("#trainFrequency").val().trim();
+
+    var newTrain = {
+        name: trainName,
+        destination: destination,
+        departure: departure,
+        frequency: frequency
+    }
+
+    console.log(newTrain);
+
+    database.ref().push(newTrain);
+
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (childSnapshot) {
+        var trainName1 = chiildSnapshot.val().trainName;
+        var destination1 = childSnapshot.val().destination;
+        var departure = childSnapshot.val().departure;
+        var frequency = childSnapshot.val().frequency;
+
+        var tr = $("<tr>");
+        tr.append([
+            $("<td>").text(trainName1),
+            $("<td>").text(destination1),
+            $("<td>").text(departure1),
+            $("<td>").text(frequency1),
+            $("<td>")
+        ]);
+        $("#trainTable").prepend(tr);
+
+})
+})
+
+</script> -->
+
+
+   
+
+</body>
+
+</html>
