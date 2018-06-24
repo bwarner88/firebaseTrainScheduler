@@ -16,8 +16,22 @@ $(document).ready(function () {
     var database = firebase.database();
     var currentTime = moment();
 
-    
-    $('#time').append(moment().format("hh:mm"));
+    function startTime() {
+        var today = new Date();
+        var hh = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        $('#time').text(hh + ":" + m + ":" + s);
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+
+    // $('#time').append(moment().format("hh:mm"));
 
     database.ref().on("child_added", function (childSnapshot) {
         var name = childSnapshot.val().name;
@@ -95,4 +109,6 @@ $(document).ready(function () {
 
         // setIntervalsetInterval(page_refresh, 30000)
     })
+
+    startTime();
 })
