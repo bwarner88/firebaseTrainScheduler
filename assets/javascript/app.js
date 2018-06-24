@@ -11,6 +11,8 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
 
+    // setIntervalsetInterval(page_refresh, 30000)
+
     var database = firebase.database();
     var currentTime = moment();
 
@@ -42,9 +44,9 @@ $(document).ready(function () {
         var departure = $("#trainDeparture").val().trim();
         var frequency = $("#trainFrequency").val().trim();
 
-       
 
-        var trainTime = moment(departure, "hh:mm"). subtract("1, years");
+
+        var trainTime = moment(departure, "hh:mm").subtract("1, years");
         var difference = currentTime.diff(moment(trainTime), "minutes");
         var remainder = difference % frequency;
         var timeUntilNext = frequency - remainder;
@@ -57,7 +59,7 @@ $(document).ready(function () {
             frequency: frequency,
             min: timeUntilNext,
             nextTrain: nextTrain
-            
+
         }
 
         database.ref().push(newTrain);
@@ -78,7 +80,7 @@ $(document).ready(function () {
                 $("<td>").text(departure1),
                 $("<td>").text(frequency1),
                 $("<td>").text(minutes1),
-                $("<td>").text(nextTrain1),                
+                $("<td>").text(nextTrain1),
                 $("<td>")
             ]);
             console.log(newTrain)
@@ -88,6 +90,6 @@ $(document).ready(function () {
 
 
 
-
+        // setIntervalsetInterval(page_refresh, 30000)
     })
 })

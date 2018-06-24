@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="Refresh" content="30"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -20,18 +22,20 @@
         <div class="container">
             <h1 class="display-4">Train Schedule</h1>
             <p class="lead">Enter train information to receive information on arrival of next train</p>
+            <h2 id="time"></h2>
         </div>
     </div>
 
     <table id="trainTable" class="table">
         <thead>
-            <tr>
-                <th scope="col">Train Name:</th>
-                <th scope="col">Destination:</th>
-                <th scope="col">Departure Time:</th>
-                <th scope="col">Frequency:</th>
-                <th scope="col">Minutes Remaining:</th>
-                <th scope="col">Arrival Time:</th>
+            <tr id="tableHeader">
+                
+                <th class="tableHeader" scope="col">Train Name:</th>
+                <th class="tableHeader" scope="col">Destination:</th>
+                <th class="tableHeader" scope="col">Departure Time:</th>
+                <th class="tableHeader" scope="col">Frequency:</th>
+                <th class="tableHeader" scope="col">Minutes Remaining:</th>
+                <th class="tableHeader" scope="col">Arrival Time:</th>
             </tr>
         </thead>
         <tbody >
@@ -45,15 +49,15 @@
             <input type="text" class="form-control" id="trainName" placeholder="Enter train name..">
         </div>
         <div class="form-group">
-            <label for="formGroupExampleInput2">Destination:</label>
+            <label for="formGroupExampleInput">Destination:</label>
             <input type="text" class="form-control" id="trainDestination" placeholder="Enter destination..">
         </div>
         <div class="form-group">
-            <label for="formGroupExampleInput2">Departure Time: (Military Time)</label>
+            <label for="formGroupExampleInput">Departure Time: (Military Time)</label>
             <input type="text" class="form-control" id="trainDeparture" placeholder="Enter departure time..">
         </div>
         <div class="form-group">
-            <label for="formGroupExampleInput2">Frequency of train: (min)</label>
+            <label for="formGroupExampleInput">Frequency of train: (min)</label>
             <input type="text" class="form-control" id="trainFrequency" placeholder="Enter frequency of train..">
         </div>
         <input id="submitBtn" class="btn btn-primary" type="submit" value="Submit">
