@@ -16,6 +16,9 @@ $(document).ready(function () {
     var database = firebase.database();
     var currentTime = moment();
 
+    
+    $('#time').append(moment().format("hh:mm"));
+
     database.ref().on("child_added", function (childSnapshot) {
         var name = childSnapshot.val().name;
         var destination = childSnapshot.val().destination;
