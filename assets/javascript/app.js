@@ -1,7 +1,7 @@
-$(document).ready(function () {
+$(document).ready(() => {
 
     // Initialize Firebase
-    var config = {
+    const config = {
         apiKey: "AIzaSyBWFUDqULLIR42qbj3F3uxUOQiB-pBq-gw",
         authDomain: "train-times-e6184.firebaseapp.com",
         databaseURL: "https://train-times-e6184.firebaseio.com",
@@ -13,34 +13,34 @@ $(document).ready(function () {
 
     // setIntervalsetInterval(page_refresh, 30000)
 
-    var database = firebase.database();
-    var currentTime = moment();
+    const database = firebase.database();
+    const currentTime = moment();
 
-    function startTime() {
-        var today = new Date();
-        var hh = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
+    const startTime = () => {
+        const today = new Date();
+        const hh = today.getHours();
+        const m = today.getMinutes();
+        const s = today.getSeconds();
         m = checkTime(m);
         s = checkTime(s);
         $('#time').text(hh + ":" + m + ":" + s);
-        var t = setTimeout(startTime, 500);
+        const t = setTimeout(startTime, 500);
     }
-    function checkTime(i) {
+    const checkTime = (i) => {
         if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
         return i;
     }
 
     // $('#time').append(moment().format("hh:mm"));
 
-    database.ref().on("child_added", function (childSnapshot) {
-        var name = childSnapshot.val().name;
-        var destination = childSnapshot.val().destination;
-        var departure = childSnapshot.val().departure;
-        var frequency = childSnapshot.val().frequency;
-        var minutes = childSnapshot.val().min;
-        var nextTrain = childSnapshot.val().nextTrain
-        var tr = $("<tr>");
+    database.ref().on("child_added", (childSnapshot) => {
+        const name = childSnapshot.val().name;
+        const destination = childSnapshot.val().destination;
+        const departure = childSnapshot.val().departure;
+        const frequency = childSnapshot.val().frequency;
+        const minutes = childSnapshot.val().min;
+        const nextTrain = childSnapshot.val().nextTrain
+        const tr = $("<tr>");
         tr.append([
             $("<td>").text(name),
             $("<td>").text(destination),
@@ -54,22 +54,22 @@ $(document).ready(function () {
     });
 
 
-    $("#submitBtn").on("click", function () {
+    $("#submitBtn").on("click", () => {
         event.preventDefault();
-        var name = $("#trainName").val().trim();
-        var destination = $("#trainDestination").val().trim();
-        var departure = $("#trainDeparture").val().trim();
-        var frequency = $("#trainFrequency").val().trim();
+        const name = $("#trainName").val().trim();
+        const destination = $("#trainDestination").val().trim();
+        const departure = $("#trainDeparture").val().trim();
+        const frequency = $("#trainFrequency").val().trim();
 
 
 
-        var trainTime = moment(departure, "hh:mm").subtract("1, years");
-        var difference = currentTime.diff(moment(trainTime), "minutes");
-        var remainder = difference % frequency;
-        var timeUntilNext = frequency - remainder;
-        var nextTrain = moment().add(timeUntilNext, "minutes").format("hh:mm a");
+        const trainTime = moment(departure, "hh:mm").subtract("1, years");
+        const difference = currentTime.diff(moment(trainTime), "minutes");
+        const remainder = difference % frequency;
+        const timeUntilNext = frequency - remainder;
+        const nextTrain = moment().add(timeUntilNext, "minutes").format("hh:mm a");
 
-        var newTrain = {
+        const newTrain = {
             name: name,
             destination: destination,
             departure: departure,
@@ -82,15 +82,15 @@ $(document).ready(function () {
         database.ref().push(newTrain);
 
 
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (childSnapshot) {
-            var trainName1 = childSnapshot.val().name;
-            var destination1 = childSnapshot.val().destination;
-            var departure1 = childSnapshot.val().departure;
-            var frequency1 = childSnapshot.val().frequency;
-            var minutes1 = childSnapshot.val().minutes;
-            var nextTrain1 = childSnapshot.val().nextTrain
+        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", (childSnapshot) => {
+            const trainName1 = childSnapshot.val().name;
+            const destination1 = childSnapshot.val().destination;
+            const departure1 = childSnapshot.val().departure;
+            const frequency1 = childSnapshot.val().frequency;
+            const minutes1 = childSnapshot.val().minutes;
+            const nextTrain1 = childSnapshot.val().nextTrain
 
-            var tr = $("<tr>");
+            const tr = $("<tr>");
             tr.append([
                 $("<td>").text(trainName1),
                 $("<td>").text(destination1),
