@@ -66,76 +66,7 @@
 
     <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    <script src="./assets/javascript/app.js"></script>
-
-<!-- <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBWFUDqULLIR42qbj3F3uxUOQiB-pBq-gw",
-    authDomain: "train-times-e6184.firebaseapp.com",
-    databaseURL: "https://train-times-e6184.firebaseio.com",
-    projectId: "train-times-e6184",
-    storageBucket: "train-times-e6184.appspot.com",
-    messagingSenderId: "881047901070"
-  };
-  firebase.initializeApp(config);
-
-var database = firebase.database();
-
-database.ref().on("child_added", function(childSnapshot){
-var name = childSnapshot.val().name;
-var destination = childSnapshot.val().destination;
-var departure = childSnapshot.val().departure;
-var frequency = childSnapshot.val().frequency;
-
-$("#trainTable > tbody").append("<tr><td>" + name + "</tr></td>" + "<tr><td>" + destination + "</tr></td>" + "<tr><td>" + departure + "</tr></td>" + "<tr><td>" + frequency + "</tr></td>")
-});
-
-database.ref().on("value", function(snapshot){
-
-});
-
-$("#submitBtn").on('click', function(){
-    event.preventDefault();
-    var trainName = $("#trainName").val().trim();
-    var destination = $("#trainDestination").val().trim();
-    var departure = $("#trainDeparture").val().trim();
-    var frequency = $("#trainFrequency").val().trim();
-
-    var newTrain = {
-        name: trainName,
-        destination: destination,
-        departure: departure,
-        frequency: frequency
-    }
-
-    console.log(newTrain);
-
-    database.ref().push(newTrain);
-
-    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (childSnapshot) {
-        var trainName1 = chiildSnapshot.val().trainName;
-        var destination1 = childSnapshot.val().destination;
-        var departure = childSnapshot.val().departure;
-        var frequency = childSnapshot.val().frequency;
-
-        var tr = $("<tr>");
-        tr.append([
-            $("<td>").text(trainName1),
-            $("<td>").text(destination1),
-            $("<td>").text(departure1),
-            $("<td>").text(frequency1),
-            $("<td>")
-        ]);
-        $("#trainTable").prepend(tr);
-
-})
-})
-
-</script> -->
-
-
-   
+    <script src="./assets/javascript/app.js"></script>   
 
 </body>
 
